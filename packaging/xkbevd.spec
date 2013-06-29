@@ -6,6 +6,7 @@ Summary:        XKB event daemon
 Url:            http://xorg.freedesktop.org/
 Group:          System/X11/Utilities
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source1001: 	xkbevd.manifest
 BuildRequires:  bison
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
@@ -19,6 +20,7 @@ a list of event specification/action pairs and/or variable definitions.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %configure
@@ -28,6 +30,7 @@ make %{?_smp_mflags}
 %make_install
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %doc COPYING
 %{_bindir}/xkbevd
