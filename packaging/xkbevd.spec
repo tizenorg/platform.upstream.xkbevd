@@ -1,3 +1,5 @@
+%bcond_with x
+
 Name:           xkbevd
 Version:        1.1.3
 Release:        1
@@ -12,6 +14,10 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
+
+%if !%{with x}
+ExclusiveArch:
+%endif
 
 %description
 The xkbevd event daemon listens for specified XKB events and executes
